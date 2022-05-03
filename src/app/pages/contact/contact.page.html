@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title color="secondary">Contact</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/login']">
+        <ion-icon color="light" name="log-in-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-text>
+    <p class="ion-padding" >For all enquiries please use your email to contact us</p>
+
+
+  </ion-text>
+  <ion-item>
+    <ion-label position="floating">Email</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Subject</ion-label>
+    <ion-select value="03">
+      <ion-select-option value="01">Register your restaurant</ion-select-option>
+      <ion-select-option value="02">Issue</ion-select-option>
+      <ion-select-option value="07">Improvement</ion-select-option>
+      <ion-select-option value="02">Other</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked"></ion-label>
+    <ion-textarea  rows="6" cols="20" placeholder="Write here your inquiry"></ion-textarea>
+  </ion-item>
+
+  <ion-button color="success" class="ion-margin ion-float-end">Submit</ion-button>
+</ion-content>

@@ -1,0 +1,31 @@
+ion-title {
+  em {
+    color: #6f42c1;
+  }
+
+  img {
+    width: 100px;
+  }
+}
+
+.box_sh {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+ion-grid {
+  ion-row {
+    ion-col.reqFoodButton {
+      display: flex;
+      justify-content: center;
+
+      ion-button {
+        position: absolute;
+        top: -36px;
+
+        button {
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+      }
+    }
+  }
+}

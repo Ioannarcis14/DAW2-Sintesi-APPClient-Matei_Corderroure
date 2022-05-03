@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title><img src="assets/img/pickeat-text.png" ></ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/login']">
+        <ion-icon color="light" name="log-in-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+
+</ion-header>
+
+<ion-content>
+<ion-content>
+  <img [ngClass]="'box_sh'" src="assets/img/pickeat.png">
+
+  <ion-grid>
+    <ion-row >
+      <ion-col [ngClass]="'reqFoodButton'">
+        <ion-button color="primary" ><ion-text color="dark">Request your food</ion-text></ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+</ion-content>

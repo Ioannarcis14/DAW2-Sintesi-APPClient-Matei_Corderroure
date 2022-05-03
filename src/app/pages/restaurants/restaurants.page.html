@@ -1,0 +1,140 @@
+<ion-header>
+  <ion-toolbar [color]="'dark'">
+    <ion-buttons [slot]="'start'">
+      <ion-menu-button [color]="'light'"></ion-menu-button>
+    </ion-buttons>
+    <ion-title [color]="'secondary'">Restaurants</ion-title>
+    <ion-buttons [slot]="'end'">
+      <ion-button [routerLink]="['/login']">
+        <ion-icon [color]="'light'" [name]="'log-in-outline'"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-grid>
+      <ion-row [ngClass]="['ion-wrap ion-justify-content-center']">
+        <ion-col size-sm="12" size-md="6">
+          <ion-card [ngClass]="['ion-margin ion-justify-content-center']" [color]="'dark'">
+            <ion-header>
+              <img [src]="'/assets/img/demo_rest.jpg'">
+              <a [routerLink]="['restaurant']" [queryParams]="">
+              <div [ngClass]="'overlay'">
+                <div [ngClass]="'text'">
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col><ion-text [ngClass]="'overText'">Carrer Molina 27</ion-text></ion-col>
+                    </ion-row>
+                  </ion-grid>
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col><ion-text [ngClass]="'overText'">977 321 444</ion-text></ion-col>
+                    </ion-row>
+                  </ion-grid>
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col>
+                        <div [ngClass]="'note great'" *ngIf="note > 7"><ion-text [color]="'primary'" [ngClass]="'overText'">9.5</ion-text></div>
+                        <div [ngClass]="'note regular'" *ngIf="note >= 4 && note <= 7"><ion-text [color]="'primary'" [ngClass]="'overText'">9.5</ion-text></div>
+                        <div [ngClass]="'note bad'" *ngIf="note > 0 && note < 4"><ion-text [color]="'primary'" [ngClass]="'overText'">9.5</ion-text></div>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </div>
+              </div>
+              </a>
+            </ion-header>
+            <ion-card-content>
+              <a [routerLink]="['restaurant']" [queryParams]="">
+              <ion-text [color]="'primary'" [ngClass]="'title'">Restaurant Gourmette</ion-text>
+              </a>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+
+      <ion-row [ngClass]="['ion-wrap ion-justify-content-center']">
+        <ion-col size-sm="12" size-md="6">
+          <ion-card [ngClass]="['ion-margin ion-justify-content-center']" [color]="'dark'">
+            <ion-header>
+              <img [src]="'/assets/img/demo_rest.jpg'">
+              <a [routerLink]="['restaurant']" [queryParams]="">
+                <div [ngClass]="'overlay'">
+                  <div [ngClass]="'text'">
+                    <ion-grid>
+                      <ion-row>
+                        <ion-col><ion-text [ngClass]="'overText'">Carrer Molina 27</ion-text></ion-col>
+                      </ion-row>
+                    </ion-grid>
+                    <ion-grid>
+                      <ion-row>
+                        <ion-col><ion-text [ngClass]="'overText'">977 321 444</ion-text></ion-col>
+                      </ion-row>
+                    </ion-grid>
+                    <ion-grid>
+                      <ion-row>
+                        <ion-col>
+                          <div [ngClass]="'note great'" *ngIf="note > 7"><ion-text [color]="'primary'" [ngClass]="'overText'">9.5</ion-text></div>
+                          <div [ngClass]="'note regular'" *ngIf="note >= 4 && note <= 7"><ion-text [color]="'primary'" [ngClass]="'overText'">9.5</ion-text></div>
+                          <div [ngClass]="'note bad'" *ngIf="note > 0 && note < 4"><ion-text [color]="'primary'" [ngClass]="'overText'">9.5</ion-text></div>
+                        </ion-col>
+                      </ion-row>
+                    </ion-grid>
+                  </div>
+                </div>
+              </a>
+            </ion-header>
+            <ion-card-content>
+              <a [routerLink]="['restaurant']" [queryParams]="">
+                <ion-text [color]="'primary'" [ngClass]="'title'">Restaurant Gourmette</ion-text>
+              </a>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+
+      <ion-row [ngClass]="['ion-wrap ion-justify-content-center']">
+        <ion-col size-sm="12" size-md="6">
+          <ion-card [ngClass]="['ion-margin ion-justify-content-center']" [color]="'dark'">
+            <ion-header>
+              <img [src]="'/assets/img/demo_rest.jpg'">
+              <a [routerLink]="['restaurant']" [queryParams]="">
+                <div [ngClass]="'overlay'">
+                  <div [ngClass]="'text'">
+                    <ion-grid>
+                      <ion-row>
+                        <ion-col><ion-text [ngClass]="'overText'">Carrer Molina 27</ion-text></ion-col>
+                      </ion-row>
+                    </ion-grid>
+                    <ion-grid>
+                      <ion-row>
+                        <ion-col><ion-text [ngClass]="'overText'">977 321 444</ion-text></ion-col>
+                      </ion-row>
+                    </ion-grid>
+                    <ion-grid>
+                      <ion-row>
+                        <ion-col>
+                          <div [ngClass]="'note great'" *ngIf="note > 7"><ion-text [color]="'primary'" [ngClass]="'overText'">9.5</ion-text></div>
+                          <div [ngClass]="'note regular'" *ngIf="note >= 4 && note <= 7"><ion-text [color]="'primary'" [ngClass]="'overText'">9.5</ion-text></div>
+                          <div [ngClass]="'note bad'" *ngIf="note > 0 && note < 4"><ion-text [color]="'primary'" [ngClass]="'overText'">9.5</ion-text></div>
+                        </ion-col>
+                      </ion-row>
+                    </ion-grid>
+                  </div>
+                </div>
+              </a>
+            </ion-header>
+            <ion-card-content>
+              <a [routerLink]="['restaurant']" [queryParams]="">
+                <ion-text [color]="'primary'" [ngClass]="'title'">Restaurant Gourmette</ion-text>
+              </a>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
+
