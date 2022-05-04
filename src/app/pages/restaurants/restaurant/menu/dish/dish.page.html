@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar [color]="'dark'">
+    <ion-buttons [slot]="'start'">
+      <ion-menu-button [color]="'light'"></ion-menu-button>
+    </ion-buttons>
+    <ion-title [color]="'secondary'">Dish</ion-title>
+    <ion-buttons [slot]="'end'">
+      <ion-button [routerLink]="['/login']">
+        <ion-icon [color]="'light'" [name]="'log-in-outline'"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <img [src]="'assets/img/dish.jpg'">
+  <div [ngClass]="'ion-padding'">
+    Spaghetti, tomato sauce, minced meat, parmesan cheese
+  </div>
+  <ion-list>
+    <h3 class="ion-padding-start ion-padding-top">Allergies</h3>
+
+    <ion-item>
+      <ion-label>
+        <p>Fish</p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <p>Soy</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <h3 class="ion-padding-start ion-padding-top">Supliments</h3>
+  <ion-item>
+    <ion-label>Ketchup</ion-label>
+    <ion-checkbox color="primary" checked slot="start"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-checkbox color="primary" checked slot="start"></ion-checkbox>
+    <ion-label>BBQ Sauce</ion-label>
+  </ion-item>
+
+  <h3 class="ion-padding-start ion-padding-top">Observation</h3>
+  <ion-item>
+    <ion-label position="stacked"></ion-label>
+    <ion-textarea  rows="3" cols="20" placeholder="Write here your inquiry"></ion-textarea>
+  </ion-item>
+  <div class="flexButton">
+    <ion-button>+ Add to cart</ion-button>
+  </div>
+</ion-content>

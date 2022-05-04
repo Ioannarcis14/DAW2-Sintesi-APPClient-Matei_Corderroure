@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar [color]="'dark'">
+    <ion-buttons [slot]="'start'">
+      <ion-menu-button [color]="'light'"></ion-menu-button>
+    </ion-buttons>
+    <ion-title [color]="'secondary'">Restaurant</ion-title>
+    <ion-buttons [slot]="'end'">
+      <ion-button [routerLink]="['/login']">
+        <ion-icon [color]="'light'" [name]="'log-in-outline'"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides [pager]="'true'" [options]="'slideOpts'">
+    <ion-slide>
+          <img [src]="'assets/img/demo_rest.jpg'" alt="First slide">
+    </ion-slide>
+    <ion-slide>
+      <img [src]="'assets/img/demo_rest.jpg'" alt="First slide">
+    </ion-slide>
+    <ion-slide>
+      <img [src]="'assets/img/demo_rest.jpg'" alt="First slide">
+    </ion-slide>
+  </ion-slides>
+  <div [ngClass]="'ion-padding'">
+    We are a new fast food brand, our dishes are full of joy. Start ordering your meal to begin your adventure
+  </div>
+  <ion-list>
+    <ion-item>
+      <ion-label>
+        <span class="listTitle">Street</span>
+        <p>Molina St. 27</p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <span class="listTitle">Postal Code</span>
+        <p>25001</p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <span class="listTitle">Phone number</span>
+        <p>977 543 266</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <div>
+    <ion-button [ngClass]="'fullButton ion-margin-top'" [color]="'secondary'" [routerLink]="['menu']">Menu</ion-button>
+  </div>
+</ion-content>
+
+

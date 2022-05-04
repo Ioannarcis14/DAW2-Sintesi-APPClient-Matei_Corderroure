@@ -3,9 +3,15 @@ ion-title {
     color: #6f42c1;
   }
 
-  img {
-    width: 100px;
+  .flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 100px;
+    }
   }
+
 }
 
 .box_sh {

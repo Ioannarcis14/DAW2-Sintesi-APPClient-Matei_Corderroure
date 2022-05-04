@@ -7,19 +7,6 @@
     </ion-header>
     <ion-content>
       <ion-list>
-        <ion-menu-toggle auto-hide="true">
-          <ion-item [routerLink]="['/home']" [routerLinkActive]="['active-menu-item']">
-            <ion-icon name="home-outline"></ion-icon>
-            <ion-label [ngClass]="['ion-margin-start']">Inici</ion-label>
-          </ion-item>
-        </ion-menu-toggle>
-
-        <ion-menu-toggle auto-hide="true">
-          <ion-item [routerLink]="['/restaurants']" [routerLinkActive]="['active-menu-item']">
-            <ion-icon name="restaurant-outline"></ion-icon>
-            <ion-label [ngClass]="['ion-margin-start']">Restaurants</ion-label>
-          </ion-item>
-        </ion-menu-toggle>
 
         <ion-menu-toggle auto-hide="true">
           <ion-item [routerLink]="['/contact']" [routerLinkActive]="['active-menu-item']">
@@ -39,5 +26,22 @@
     </ion-content>
   </ion-menu>
 
+
   <ion-router-outlet id="mainContent"></ion-router-outlet>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom" color="light">
+      <ion-tab-button tab="restaurants">
+        <ion-icon name="restaurant-outline"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button tab="home">
+        <ion-icon name="home-outline" ></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button tab="cats">
+        <ion-icon name="cart-outline"></ion-icon>
+        <ion-badge color="danger">6</ion-badge>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
 </ion-app>

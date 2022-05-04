@@ -1,0 +1,96 @@
+<ion-header>
+  <ion-toolbar [color]="'dark'">
+    <ion-buttons [slot]="'start'">
+      <ion-menu-button [color]="'light'"></ion-menu-button>
+    </ion-buttons>
+    <ion-title [color]="'secondary'">Menu</ion-title>
+    <ion-buttons [slot]="'end'">
+      <ion-button [routerLink]="['/login']">
+        <ion-icon [color]="'light'" [name]="'log-in-outline'"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <ion-list-header> 1st Dish </ion-list-header>
+
+    <ion-item [routerLink]="['dish']">
+      <img src="assets/img/dish.jpg" />
+      <ion-label>
+        <h2>Finn</h2>
+        <p>Listen, I've had a pretty messed up day...</p>
+          <h3 class="ion-padding-top ion-float-end">9.99€</h3>
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <img src="assets/img/dish.jpg" />
+      <ion-label>
+        <h2>Han</h2>
+        <p>I've got enough on my plate as it is, and I...</p>
+        <h3 class="ion-padding-top ion-float-end">9.99€</h3>
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <img src="assets/img/dish.jpg" />
+      <ion-label>
+        <h2>Rey</h2>
+        <p>You will remove these restraints and leave...</p>
+        <h3 class="ion-padding-top ion-float-end">9.99€</h3>
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <img src="assets/img/dish.jpg" />
+      <ion-label>
+        <h2>Luke</h2>
+        <p>I feel the good in you, the conflict...</p>
+        <h3 class="ion-padding-top ion-float-end">9.99€</h3>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header> 2nd Dish </ion-list-header>
+
+    <ion-item>
+      <img src="assets/img/dish2.jpg" />
+      <ion-label>
+        <h2>Poe</h2>
+        <p>I just upgraded my X-Wing. Next time...</p>
+        <h3 class="ion-padding-top ion-float-end">9.99€</h3>
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <img src="assets/img/dish2.jpg" />
+      <ion-label>
+        <h2>Ben</h2>
+        <p>These aren't the droids you're looking for...</p>
+        <h3 class="ion-padding-top ion-float-end">9.99€</h3>
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <img src="assets/img/dish2.jpg" />
+      <ion-label>
+        <h2>Leia</h2>
+        <p>I've placed information vital to the survival...</p>
+        <h3 class="ion-padding-top ion-float-end">9.99€</h3>
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <img src="assets/img/dish2.jpg" />
+      <ion-label>
+        <h2>Yoda</h2>
+        <p>Do or do not. There is no try...</p>
+        <h3 class="ion-padding-top ion-float-end">9.99€</h3>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
