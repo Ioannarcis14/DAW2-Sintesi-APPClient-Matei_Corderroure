@@ -2,11 +2,27 @@
   <ion-menu side="start" menuId="mainMenu" contentId="mainContent">
     <ion-header color="primary">
       <ion-toolbar color="primary">
-        <ion-title>Menú</ion-title>
+        <ion-title>Jorge Nitales</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content>
       <ion-list>
+        <div>
+          <img [src]="'assets/img/profile.jpg'">
+        </div>
+        <ion-menu-toggle auto-hide="true">
+          <ion-item [routerLink]="['/contact']" [routerLinkActive]="['active-menu-item']">
+            <ion-icon name="eye-outline"></ion-icon>
+            <ion-label [ngClass]="['ion-margin-start']">View Profile</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle auto-hide="true">
+          <ion-item [routerLink]="['/contact']" [routerLinkActive]="['active-menu-item']">
+            <ion-icon name="create-outline"></ion-icon>
+            <ion-label [ngClass]="['ion-margin-start']">Edit Profile</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
 
         <ion-menu-toggle auto-hide="true">
           <ion-item [routerLink]="['/contact']" [routerLinkActive]="['active-menu-item']">
