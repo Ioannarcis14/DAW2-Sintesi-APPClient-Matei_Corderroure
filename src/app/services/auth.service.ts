@@ -5,7 +5,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthService {
-  private BASE_URL: string = 'http://localhost:8080/api';
+  private BASE_URL: string = 'http://localhost:8080';
   private _email: string = null;
   private _passwd: string = null;
 

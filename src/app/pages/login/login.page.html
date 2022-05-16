@@ -1,9 +1,37 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title color="secondary">Log In</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/login']">
+        <ion-icon color="light" name="log-in-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content color="dark">
 
+  <div [ngClass]="['ion-margin']">
+    <ion-grid>
+      <ion-row>
+        <ion-item color="dark" class="ion-margin-vertical">
+          <ion-input [(ngModel)]="email" placeholder="E-mail" ></ion-input>
+        </ion-item>
+      </ion-row>
+      <ion-row>
+        <ion-item color="dark" class="ion-margin-bottom">
+          <ion-input type="password" [(ngModel)]="passwd" placeholder="Password" ></ion-input>
+        </ion-item>
+      </ion-row>
+      <ion-row [ngClass]="['ion-justify-content-center ion-margin-top']">
+        <ion-button color="secondary" (click)="login()" class="ion-margin-top">SIGN IN</ion-button>
+      </ion-row>
+      <ion-row [ngClass]="['ion-justify-content-center ion-margin']">
+        <a [routerLink]="['/register']">Not a member? Register</a>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>
