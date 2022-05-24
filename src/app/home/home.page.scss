@@ -36,3 +36,22 @@ ion-grid {
     }
   }
 }
+
+.icons {
+  margin-top: 50px;
+  background-color: lightgray;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  display: flex;
+  justify-content: space-around;
+
+  .flex-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  ion-icon {
+    font-size: 64px;
+  }
+}
