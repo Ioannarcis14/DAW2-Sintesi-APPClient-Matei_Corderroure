@@ -5,7 +5,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthService {
-  private BASE_URL: string = 'http://localhost:8080';
+  private BASE_URL: string = 'http://localhost:80';
   private _email: string = null;
   private _passwd: string = null;
 
@@ -19,23 +19,25 @@ export class AuthService {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
       })
-    }
+    };
 
     const data: any = {
-      'email':  this._email,
+      'login':  this._email,
       'password':  this._passwd
-    }
+    };
 
     return new Promise(
       (resolve, reject) => {
         // eslint-disable-next-line no-underscore-dangle
-        this._http.post(this.BASE_URL + '/login', data, options).subscribe(
+        this._http.post(this.BASE_URL + '/api/login', data, options).subscribe(
           (response: any) => {
             if(response.status == 200) {
               localStorage.setItem('TOKEN', response.token);
               resolve(true);
             }
-            else resolve(false);
+          else {
+              resolve(false);
+            }
           },
           (error: any) => {
             reject('Error');

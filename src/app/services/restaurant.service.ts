@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
 })
 
 export class RestaurantService {
-  private BASE_URL: string = "http://localhost:8080/api/restaurant";
+  private BASE_URL: string = "http://localhost:80/api/restaurant/getAll";
   private _restaurants: any[] = [];
 
   constructor(private _authService: AuthService, private _http: HttpClient, private _router: Router) {}
@@ -16,9 +16,10 @@ export class RestaurantService {
   retriveRestaurant(): void {
     this._http.get(this.BASE_URL).subscribe(
       (restaurant: any) => {
-        this._restaurants = restaurant.data;
+        this._restaurants = restaurant.data.list;
       }
     );
+    console.log(this._restaurants);
   }
 
   // async addPieceOfRestaurants(title: string, body: string): Promise<boolean> {

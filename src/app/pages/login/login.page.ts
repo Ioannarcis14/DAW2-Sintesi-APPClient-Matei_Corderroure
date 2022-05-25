@@ -7,6 +7,7 @@ import {Router} from "@angular/router";
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
+
 export class LoginPage implements OnInit {
   private email;
   private passwd;
@@ -20,6 +21,7 @@ export class LoginPage implements OnInit {
     try {
       const response = await this._authService.login(this.email, this.passwd);
       if(response) {
+        console.log(this._authService.token);
         this._router.navigate(["/home"]);
       }
     } catch(error) {
