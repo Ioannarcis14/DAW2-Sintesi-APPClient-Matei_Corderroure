@@ -16,10 +16,13 @@ export class RestaurantService {
   retriveRestaurant(): void {
     this._http.get(this.BASE_URL).subscribe(
       (restaurant: any) => {
-        this._restaurants = restaurant.data.list;
+        this._restaurants = restaurant.data;
       }
     );
-    console.log(this._restaurants);
+  }
+
+  getRestaurants(): any {
+    return this._restaurants;
   }
 
   // async addPieceOfRestaurants(title: string, body: string): Promise<boolean> {

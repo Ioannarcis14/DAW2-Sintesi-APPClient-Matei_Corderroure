@@ -9,8 +9,13 @@ import {RestaurantService} from "../../services/restaurant.service";
 export class RestaurantsPage implements OnInit {
   public note = 9;
   constructor(private restaurantServ: RestaurantService ) {
-    console.log(this.restaurantServ.retriveRestaurant());
+    this.restaurantServ.retriveRestaurant();
   }
+
+  get restaurants() {
+    return console.log(this.restaurantServ.getRestaurants());
+  }
+
 
   ngOnInit() {
   }
