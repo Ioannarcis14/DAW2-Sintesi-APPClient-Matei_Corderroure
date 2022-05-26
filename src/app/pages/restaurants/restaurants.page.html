@@ -37,9 +37,9 @@
                   <ion-grid>
                     <ion-row>
                       <ion-col>
-                        <div [ngClass]="'note great'" *ngIf="note > 7"><ion-text [color]="'primary'" [ngClass]="'overText'">9.5</ion-text></div>
-                        <div [ngClass]="'note regular'" *ngIf="note >= 4 && note <= 7"><ion-text [color]="'primary'" [ngClass]="'overText'">9.5</ion-text></div>
-                        <div [ngClass]="'note bad'" *ngIf="note > 0 && note < 4"><ion-text [color]="'primary'" [ngClass]="'overText'">9.5</ion-text></div>
+                        <div [ngClass]="'note great'" *ngIf="restaurant.note > 7"><ion-text [color]="'primary'" [ngClass]="'overText'">{{ restaurant.note}}</ion-text></div>
+                        <div [ngClass]="'note regular'" *ngIf="restaurant.note >= 4 && restaurant.note <= 7"><ion-text [color]="'primary'" [ngClass]="'overText'">{{ restaurant.note }}</ion-text></div>
+                        <div [ngClass]="'note bad'" *ngIf="restaurant.note > 0 && restaurant.note < 4"><ion-text [color]="'primary'" [ngClass]="'overText'">{{ restaurant.note }}</ion-text></div>
                       </ion-col>
                     </ion-row>
                   </ion-grid>

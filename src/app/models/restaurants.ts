@@ -12,4 +12,5 @@ export interface Restaurants {
   img_gallery: string;
   first_img: string[];
   discharged: number;
+  note: string;
 }
