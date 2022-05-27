@@ -2,23 +2,24 @@ import { Injectable } from '@angular/core';
 import { AuthService } from "./auth.service";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Router } from "@angular/router";
-import { Restaurant } from '../models/restaurant';
+import { Restaurants } from '../models/restaurants';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class RestaurantService {
+export class RestaurantsService {
   private BASE_URL: string = "http://localhost:80/api/restaurant/getAll";
   private _restaurants = [];
 
   constructor(private _authService: AuthService, private _http: HttpClient, private _router: Router) {}
 
-  retriveRestaurant(): void {
-    this._http.get(this.BASE_URL).subscribe(
+  retriveRestaurants(): void {
+    this._http.get('http://localhost:80/api/restaurant/getAllRestReviews').subscribe(
+
       (restaurant: any) => {
         for(let i = 0; i < restaurant.data.length; i++) {
-          const data: Restaurant = {
+          const data: Restaurants = {
             id: restaurant.data[i].id,
             name: restaurant.data[i].name,
             city: restaurant.data[i].city,
@@ -26,19 +27,14 @@ export class RestaurantService {
             postal_code: restaurant.data[i].postal_code,
             description: restaurant.data[i].description,
             phone: restaurant.data[i].phone,
-            twitter: restaurant.data[i].twitter,
-            facebook: restaurant.data[i].facebook,
-            instagram: restaurant.data[i].instagram,
-            img_gallery: restaurant.data[i].img_gallery.split(','),
             first_img: restaurant.data[i].img_gallery.split(','),
-            discharged: restaurant.data[i].discharged,
+            note: parseFloat(restaurant.data[i].nota).toFixed(1),
           };
           this._restaurants.push(data);
         }
       }
     );
   }
-
 
   getRestaurants(): any {
     return this._restaurants;

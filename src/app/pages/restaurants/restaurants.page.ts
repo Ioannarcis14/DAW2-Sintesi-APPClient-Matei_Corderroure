@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RestaurantService } from "../../services/restaurant.service";
+import { RestaurantsService } from "../../services/restaurants.service";
 
 @Component({
   selector: 'app-restaurants',
@@ -7,10 +7,9 @@ import { RestaurantService } from "../../services/restaurant.service";
   styleUrls: ['./restaurants.page.scss'],
 })
 export class RestaurantsPage implements OnInit {
-  public note = 9;
 
-  constructor(private restaurantServ: RestaurantService) {
-    this.restaurantServ.retriveRestaurant();
+  constructor(private restaurantServ: RestaurantsService) {
+    this.restaurantServ.retriveRestaurants();
   }
 
   get restaurants() {

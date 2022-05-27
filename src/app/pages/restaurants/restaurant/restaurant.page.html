@@ -14,36 +14,30 @@
 
 <ion-content>
   <ion-slides [pager]="'true'" [options]="'slideOpts'">
-    <ion-slide>
-          <img [src]="'assets/img/demo_rest.jpg'" alt="First slide">
-    </ion-slide>
-    <ion-slide>
-      <img [src]="'assets/img/demo_rest.jpg'" alt="First slide">
-    </ion-slide>
-    <ion-slide>
-      <img [src]="'assets/img/demo_rest.jpg'" alt="First slide">
+    <ion-slide *ngFor="let rest_img of restaurants[0].img_gallery; index as i">
+          <img [src]="'/assets/'+ rest_img">
     </ion-slide>
   </ion-slides>
   <div [ngClass]="'ion-padding'">
-    We are a new fast food brand, our dishes are full of joy. Start ordering your meal to begin your adventure
+    {{ restaurants[0].description }}
   </div>
   <ion-list>
     <ion-item>
       <ion-label>
         <span class="listTitle">Street</span>
-        <p>Molina St. 27</p>
+        <p>{{ restaurants[0].street}}</p>
       </ion-label>
     </ion-item>
     <ion-item>
       <ion-label>
-        <span class="listTitle">Postal Code</span>
-        <p>25001</p>
+        <span class="listTitle">Zip Code</span>
+        <p>{{ restaurants[0].postal_code}}</p>
       </ion-label>
     </ion-item>
     <ion-item>
       <ion-label>
         <span class="listTitle">Phone number</span>
-        <p>977 543 266</p>
+        <p>{{ restaurants[0].phone}}</p>
       </ion-label>
     </ion-item>
   </ion-list>

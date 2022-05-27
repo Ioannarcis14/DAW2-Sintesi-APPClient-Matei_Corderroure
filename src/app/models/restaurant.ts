@@ -1,4 +1,4 @@
-export interface Restaurants {
+export interface Restaurant {
   id: number;
   name: string;
   city: string;
@@ -6,6 +6,10 @@ export interface Restaurants {
   postal_code: number;
   description: string;
   phone: string;
+  twitter: string;
+  facebook: string;
+  instagram: string;
+  img_gallery: string;
   first_img: string[];
-  note: string;
+  discharged: number;
 }
