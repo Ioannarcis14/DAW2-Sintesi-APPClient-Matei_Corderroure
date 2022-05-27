@@ -21,7 +21,7 @@
             <ion-header>
               <img [src]="'/assets/'+ restaurant.first_img[0]">
 <!--              <img [src]="'/assets/img/demo_rest.jpg'">-->
-              <a [routerLink]="['restaurant']" [queryParams]="restaurant.id">
+              <a [routerLink]="['restaurant']" [queryParams]="{id: restaurant.id}">
               <div [ngClass]="'overlay'">
                 <div [ngClass]="'text'">
                   <ion-grid>

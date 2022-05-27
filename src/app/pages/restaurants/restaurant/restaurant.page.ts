@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {RestaurantService} from "../../../services/restaurant.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-restaurant',
@@ -7,9 +8,12 @@ import {RestaurantService} from "../../../services/restaurant.service";
   styleUrls: ['./restaurant.page.scss'],
 })
 export class RestaurantPage implements OnInit {
+  public idRoute;
 
-  constructor(private restaurantServ: RestaurantService) {
+  constructor(private restaurantServ: RestaurantService, private route: ActivatedRoute) {
     this.restaurantServ.retriveRestaurant();
+    this.idRoute = this.route.snapshot.queryParams.id;
+
   }
 
   get restaurants() {

@@ -14,83 +14,25 @@
 
 
 <ion-content>
-  <ion-list>
-    <ion-list-header> 1st Dish </ion-list-header>
-
-    <ion-item [routerLink]="['dish']">
-      <img src="assets/img/dish.jpg" />
-      <ion-label>
-        <h2>Bolognesse Spaghetti</h2>
-        <p>Spaghetti, bolognesse, parmessane...</p>
-          <h3 class="ion-padding-top ion-float-end">9.99€</h3>
-      </ion-label>
-    </ion-item>
-
-    <ion-item [routerLink]="['dish']">
-      <img src="assets/img/canelons.jpg" />
-      <ion-label>
-        <h2>Cannellone</h2>
-        <p>Minced meat, bechamel, oregano...</p>
-        <h3 class="ion-padding-top ion-float-end">9.99€</h3>
-      </ion-label>
-    </ion-item>
-
-    <ion-item [routerLink]="['dish']">
-      <img src="assets/img/macarrones.jpeg" />
-      <ion-label>
-        <h2>Mushroom Sauce Macaronni</h2>
-        <p>Macaronni, bechamel, mushrooms...</p>
-        <h3 class="ion-padding-top ion-float-end">9.99€</h3>
-      </ion-label>
-    </ion-item>
-
-    <ion-item [routerLink]="['dish']">
-      <img src="assets/img/ensalada.jpg" />
-      <ion-label>
-        <h2>Summer Salad</h2>
-        <p>Tomato, lettuce, chicken breast...</p>
-        <h3 class="ion-padding-top ion-float-end">9.99€</h3>
-      </ion-label>
-    </ion-item>
-  </ion-list>
 
   <ion-list>
-    <ion-list-header> 2nd Dish </ion-list-header>
+    <div *ngFor="let cat of categoryName; index as c">
+      <ion-list-header> {{ cat }} </ion-list-header>
 
-    <ion-item [routerLink]="['dish']">
-      <img src="assets/img/dish2.jpg" />
-      <ion-label>
-        <h2>Pork Chop</h2>
-        <p>Pork chop, fried fries, guarnition...</p>
-        <h3 class="ion-padding-top ion-float-end">9.99€</h3>
-      </ion-label>
-    </ion-item>
-
-    <ion-item [routerLink]="['dish']">
-      <img src="assets/img/albondigas.jpeg" />
-      <ion-label>
-        <h2>Swedish Meatballs</h2>
-        <p>Pork meatballs, guarnition...</p>
-        <h3 class="ion-padding-top ion-float-end">9.99€</h3>
-      </ion-label>
-    </ion-item>
-
-    <ion-item [routerLink]="['dish']">
-      <img src="assets/img/pato.jpg" />
-      <ion-label>
-        <h2>Orange Sauce Duck</h2>
-        <p>Duck, Orange Sauce, guarnition...</p>
-        <h3 class="ion-padding-top ion-float-end">9.99€</h3>
-      </ion-label>
-    </ion-item>
-
-    <ion-item [routerLink]="['dish']">
-      <img src="assets/img/bacalao.jpg" />
-      <ion-label>
-        <h2>Codfish</h2>
-        <p>Codfish, pipper, oil...</p>
-        <h3 class="ion-padding-top ion-float-end">9.99€</h3>
-      </ion-label>
-    </ion-item>
+      <div *ngFor="let item of menu; index as id">
+        <ion-item [routerLink]="['dish']" [queryParams]="{id: item.dish_id}" *ngIf="item.name == cat">
+          <img [src]="item.imgs[0]" />
+          <ion-label>
+            <h2>{{item.dish_name}}</h2>
+            <p>{{item.dish_short_description}}</p>
+            <h3 class="ion-padding-top ion-float-end">{{item.dish_price}}</h3>
+          </ion-label>
+        </ion-item>
+      </div>
+    </div>
   </ion-list>
+
+  <ion-title *ngIf="menu.length == 0">No Menu Info displayed</ion-title>
+
+
 </ion-content>
