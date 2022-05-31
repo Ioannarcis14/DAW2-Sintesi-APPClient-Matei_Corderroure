@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
+import {UserService} from "./services/user.service";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,20 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  public idRoute;
+  public userLS;
+  constructor(private userServ: UserService, private route: ActivatedRoute ) {
+    this.idRoute = this.route.snapshot.queryParams.id;
+    this.userLS = localStorage.getItem('LOGIN');
+    console.log(this.userLS);
+    this.userServ.retriveUser(this.userLS);
+  }
+
+  get user() {
+    console.log(this.userServ.getUser());
+    return this.userServ.getUser();
+  }
+
+  ngOnInit() {
+  }
 }

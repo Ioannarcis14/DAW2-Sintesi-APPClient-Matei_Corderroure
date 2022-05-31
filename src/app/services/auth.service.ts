@@ -26,12 +26,14 @@ export class AuthService {
       'password':  this._passwd
     };
 
+
     return new Promise(
       (resolve, reject) => {
         // eslint-disable-next-line no-underscore-dangle
         this._http.post(this.BASE_URL + '/api/login', data, options).subscribe(
           (response: any) => {
             if(response.status == 200) {
+              localStorage.setItem('LOGIN', data.login);
               localStorage.setItem('TOKEN', response.token);
               resolve(true);
             }
@@ -59,6 +61,8 @@ export class AuthService {
     this._email = null;
     this._passwd = null;
     localStorage.removeItem('TOKEN');
+    localStorage.removeItem('LOGIN');
+
   }
 
   get token(): string {

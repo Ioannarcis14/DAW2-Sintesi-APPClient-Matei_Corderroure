@@ -23,9 +23,11 @@ export class LoginPage implements OnInit {
       if(response) {
         console.log(this._authService.token);
         this._router.navigate(["/home"]);
+      } else {
+        alert('Incorrect Credentials')
       }
     } catch(error) {
-      console.log("Error!");
+      alert('Login error');
     }
   }
 }
