@@ -44,6 +44,15 @@
         </ion-item>
       </ion-list>
 
+      <div class="ion-margin-top ion-padding-top">
+        <ion-text class="ion-padding-start ">Rate the Restaurant</ion-text>
+        <ion-range min="0" max="10" pin color="warning">
+          <ion-text slot="start">1</ion-text>
+          <ion-text slot="end">10</ion-text>
+        </ion-range>
+      </div>
+
+
       <div class="buttonDiv">
         <ion-button [ngClass]="'fullButton ion-margin-top'" [color]="'secondary'" [routerLink]="['menu']" [queryParams]="{id: restaurant.id}">Menu</ion-button>
       </div>

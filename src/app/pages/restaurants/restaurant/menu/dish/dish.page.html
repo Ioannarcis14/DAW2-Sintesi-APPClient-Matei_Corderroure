@@ -13,41 +13,39 @@
 </ion-header>
 
 <ion-content>
-  <img [src]="'assets/img/dish.jpg'">
-  <div [ngClass]="'ion-padding'">
-    Spaghetti, tomato sauce, minced meat, parmesan cheese
+  <div *ngFor="let item of dish; index as id">
+    <div class="img" [style]="'background-image:'+ 'url(assets/'+item.imgs+ ')'">
+    </div>
+<!--    <img [src]="'assets/'+ item.imgs">-->
+    <div [ngClass]="'ion-padding'">
+      {{ item.dish_desc }}
+    </div>
+    <div [ngClass]="'ion-padding'">
+      {{ item.short_description }}
+    </div>
+    <ion-list *ngIf="allergen.length != 0">
+      <h3 class="ion-padding-start ion-padding-top">Allergies</h3>
+
+      <ion-item *ngFor="let item_a of allergen; index as s">
+        <ion-label>
+          <p>{{ item_a.name }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <div *ngIf="supplement.length != 0">
+      <h3 class="ion-padding-start ion-padding-top">Supliments</h3>
+
+      <ion-item *ngFor="let item_s of supplement; index as s">
+        <ion-label>{{ item_s.name }}</ion-label>
+        <ion-checkbox color="primary" checked slot="start"></ion-checkbox>
+      </ion-item>
+    </div>
+
+
+    <div class="flexButton">
+      <ion-button>+ Add to cart</ion-button>
+    </div>
   </div>
-  <ion-list>
-    <h3 class="ion-padding-start ion-padding-top">Allergies</h3>
 
-    <ion-item>
-      <ion-label>
-        <p>Fish</p>
-      </ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>
-        <p>Soy</p>
-      </ion-label>
-    </ion-item>
-  </ion-list>
-
-  <h3 class="ion-padding-start ion-padding-top">Supliments</h3>
-  <ion-item>
-    <ion-label>Ketchup</ion-label>
-    <ion-checkbox color="primary" checked slot="start"></ion-checkbox>
-  </ion-item>
-  <ion-item>
-    <ion-checkbox color="primary" checked slot="start"></ion-checkbox>
-    <ion-label>BBQ Sauce</ion-label>
-  </ion-item>
-
-  <h3 class="ion-padding-start ion-padding-top">Observation</h3>
-  <ion-item>
-    <ion-label position="stacked"></ion-label>
-    <ion-textarea  rows="3" cols="20" placeholder="Write here your inquiry"></ion-textarea>
-  </ion-item>
-  <div class="flexButton">
-    <ion-button>+ Add to cart</ion-button>
-  </div>
 </ion-content>
