@@ -21,18 +21,17 @@
     </div>
   </div>
 
-  <div class="card-body">
+  <div class="card-body" *ngFor="let item of user; index as i">
     <div class="user-meta ion-text-center">
-      <h3 class="playername">John Doe</h3>
-      <h5 class="country">Customer</h5>
+      <h3 class="playername"> {{ item.username }} </h3>
 
-      <h6 class="ranking">Current Messages: <ion-chip>
-        <ion-label>3</ion-label>
+      <h6 class="ranking">Total Messages: <ion-chip>
+        <ion-label>{{ messages.number }}</ion-label>
       </ion-chip>
       </h6>
     </div>
     <ion-button expand="full" color="primary" id="trigger-personal">Personal Information</ion-button>
-    <ion-button expand="full" color="primary">Go to Dashboard</ion-button>
+    <ion-button expand="full" color="primary" [routerLink]="['messages']">Messages</ion-button>
   </div>
 
   <ion-modal trigger="trigger-personal"
@@ -42,37 +41,37 @@
   >
     <ng-template>
       <ion-content>
-        <ion-list>
+        <ion-list *ngFor="let item of user; index as i">
           <ion-list-header> Personal Information </ion-list-header>
 
           <ion-item class="ion-margin-vertical">
             <ion-label>Email: </ion-label>
-            <ion-text>user@admin.com</ion-text>
+            <ion-text>{{item.email}}</ion-text>
           </ion-item>
 
           <ion-item class="ion-margin-vertical">
             <ion-label>Name and surname: </ion-label>
-            <ion-text>John Doe Mendoza</ion-text>
+            <ion-text>{{item.name}} {{item.surname}}</ion-text>
           </ion-item>
 
           <ion-item class="ion-margin-vertical">
-            <ion-label>Document ID: </ion-label>
-            <ion-text>X92312343E</ion-text>
+            <ion-label>Phone: </ion-label>
+            <ion-text>{{item.phone}}</ion-text>
           </ion-item>
 
           <ion-item class="ion-margin-vertical">
             <ion-label>City: </ion-label>
-            <ion-text>Michigan</ion-text>
+            <ion-text>{{item.city}}</ion-text>
           </ion-item>
 
           <ion-item class="ion-margin-vertical">
             <ion-label>Zip Code: </ion-label>
-            <ion-text>34002</ion-text>
+            <ion-text>{{item.postal_code}}</ion-text>
           </ion-item>
 
           <ion-item class="ion-margin-vertical">
             <ion-label>Street: </ion-label>
-            <ion-text>New Jersey St.</ion-text>
+            <ion-text>{{item.street}}</ion-text>
           </ion-item>
         </ion-list>
       </ion-content>

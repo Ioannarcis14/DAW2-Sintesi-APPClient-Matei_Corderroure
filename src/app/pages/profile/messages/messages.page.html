@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title color="secondary">Message</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/login']">
+        <ion-icon color="light" name="log-in-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true" slot="fixed">
+  <ion-list class="ion-padding">
+    <ion-grid *ngFor="let item of messagesUser; index as i">
+      <h2>{{item.theme}}</h2>
+      <p> {{item.message}}</p>
+      <hr>
+    </ion-grid>
+
+  </ion-list>
+
+</ion-content>

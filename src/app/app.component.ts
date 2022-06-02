@@ -10,11 +10,11 @@ import {UserService} from "./services/user.service";
 export class AppComponent {
   public idRoute;
   public userLS;
+
   constructor(private userServ: UserService, private route: ActivatedRoute ) {
     this.idRoute = this.route.snapshot.queryParams.id;
     this.userLS = localStorage.getItem('LOGIN');
     console.log(this.userLS);
-    this.userServ.retriveUser(this.userLS);
   }
 
   get user() {

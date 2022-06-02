@@ -1,14 +1,17 @@
 <ion-app>
-  <ion-menu side="start" menuId="mainMenu" contentId="mainContent">
+  <ion-menu side="start" menuId="mainMenu" contentId="mainContent" *ngIf="user.length != 0">
     <ion-header color="primary">
       <ion-toolbar color="primary">
-        <ion-title>John Doe</ion-title>
+        <div *ngFor="let item of user; index as i">
+          <ion-title>{{item.username}}}</ion-title>
+        </div>
+
       </ion-toolbar>
     </ion-header>
     <ion-content>
       <ion-list>
-        <div>
-          <img [src]="'assets/img/profile.jpg'">
+        <div *ngFor="let item of user; index as i">
+          <img [src]="item.img_profile">
         </div>
         <ion-menu-toggle auto-hide="true">
           <ion-item [routerLink]="['/profile']" [routerLinkActive]="['active-menu-item']">

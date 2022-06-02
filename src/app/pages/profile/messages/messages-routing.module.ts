@@ -1,14 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { EditPage } from './edit.page';
-import {AuthGuard} from "../../../guards/auth.guard";
+import { MessagesPage } from './messages.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: EditPage,
-    canActivate: [AuthGuard]
+    component: MessagesPage
   }
 ];
 
@@ -16,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class EditPageRoutingModule {}
+export class MessagesPageRoutingModule {}
