@@ -44,6 +44,40 @@ export class RestaurantService {
     return this._restaurants;
   }
 
+  async rate(score, review): Promise<boolean> {
+    //Constant per gestionar l'endpoint a utiltizar
+    const ENDPOINT: string = "/add";
+
+    //Dades de la notícia
+    const data: any = {
+      'score': score,
+      'review': review
+    }
+
+    /*Capçaleres necessàries:
+        - Generals (tant per WebServices públics com privats): 'Accept' i 'Content-Type'
+        - Específica (per gestionar el TOKEN i l'autenticació): 'Authorization'
+    */
+    const options = {
+      headers: new HttpHeaders({
+        'Accept': '/',
+        'Content-Type': 'application/json',
+
+        'Access-Control-Allow-Origin': '*',
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+        "Access-Control-Allow-Headers": "access-control-allow-headers,access-control-allow-methods,access-control-allow-origin,authorization,content-type"
+      })
+    };
+
+    await this._http.post("http://localhost:80/users/createValorations", data, options).subscribe(
+      (response: any) => {
+        console.log(response);
+        response.refreshToken;
+        return true;
+      }
+    );
+    return false;
+  }
   // async addPieceOfRestaurants(title: string, body: string): Promise<boolean> {
   //   //Constant per gestionar l'endpoint a utiltizar
   //   const ENDPOINT: string = "/add";

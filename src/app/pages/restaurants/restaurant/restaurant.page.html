@@ -49,12 +49,16 @@
 
       <div class="ion-margin-top ion-padding-top" *ngIf="isAuth">
         <ion-text class="ion-padding-start ">Rate the Restaurant</ion-text>
-        <ion-range min="0" max="10" pin color="warning">
+        <ion-range  [(ngModel)]="score" min="0" max="10" pin color="warning">
           <ion-text slot="start">1</ion-text>
           <ion-text slot="end">10</ion-text>
         </ion-range>
 
-        <ion-button class="ion-margin">Rate</ion-button>
+        <ion-item>
+          <ion-textarea  [(ngModel)]="review" class="ion-margin"></ion-textarea>
+
+        </ion-item>
+        <ion-button class="ion-margin" (click)="rate()">Rate</ion-button>
       </div>
 
 

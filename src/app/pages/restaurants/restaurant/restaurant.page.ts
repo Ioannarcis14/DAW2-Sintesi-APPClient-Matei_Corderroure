@@ -10,6 +10,8 @@ import {AuthService} from "../../../services/auth.service";
 })
 export class RestaurantPage implements OnInit {
   public idRoute;
+  private review;
+  private score;
 
   constructor(private restaurantServ: RestaurantService, private route: ActivatedRoute, private auth: AuthService) {
     this.restaurantServ.retriveRestaurant();
@@ -32,6 +34,10 @@ export class RestaurantPage implements OnInit {
 
   logout(): void {
     this.auth.logout();
+  }
+
+  rate() {
+    this.restaurantServ.rate(this.score, this.review);
   }
 
 }

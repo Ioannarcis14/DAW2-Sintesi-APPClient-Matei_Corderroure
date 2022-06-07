@@ -14,7 +14,6 @@ export class RestaurantsPage implements OnInit {
   }
 
   get restaurants() {
-    console.log(this.restaurantServ.getRestaurants());
     return this.restaurantServ.getRestaurants();
   }
 
