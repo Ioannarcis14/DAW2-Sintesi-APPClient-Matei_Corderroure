@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class AuthService {
   private _email: string = null;
   private _passwd: string = null;
 
-  constructor(private _http: HttpClient) {}
+  constructor(private _http: HttpClient, private _route: Router) {}
 
   async login(email: string, passwd: string): Promise<boolean> {
     this._email = email;
@@ -77,6 +78,55 @@ export class AuthService {
 
   isUserAuthenticated(): boolean {
     return this._email != null && this._passwd != null && localStorage.getItem("TOKEN") != null;
+  }
+
+  async Register(email, username, name, surname, phone, city, street, postal_code, password, pass_confirm, img_profile): Promise<boolean> {
+    //Constant per gestionar l'endpoint a utiltizar
+    const ENDPOINT: string = "/add";
+
+    //Dades de la notícia
+    const data: any = {
+      'email': email,
+      'username': username,
+      'name': name,
+      'surname': surname,
+      'phone': phone,
+      'city': city,
+      'street': street,
+      'postal_code': postal_code,
+      'password': password,
+      'pass_confirm': pass_confirm,
+      'img_profile': img_profile
+
+    }
+
+    /*Capçaleres necessàries:
+        - Generals (tant per WebServices públics com privats): 'Accept' i 'Content-Type'
+        - Específica (per gestionar el TOKEN i l'autenticació): 'Authorization'
+    */
+    const options = {
+      headers: new HttpHeaders({
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+
+        'Access-Control-Allow-Origin': '*',
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+        "Access-Control-Allow-Headers": "access-control-allow-headers,access-control-allow-methods,access-control-allow-origin,authorization,content-type"
+      })
+    };
+
+    await this._http.post("http://localhost:80/register", data, options).subscribe(
+      (response: any) => {
+        console.log(response);
+        response.refreshToken;
+        return true;
+      }, async (error: any) => {
+        const logResult = await this.restartSession();
+        if(!logResult) this._route.navigate(["/login"]);
+        else return this.Register(email, username, name, surname, phone, city, street, postal_code, password, pass_confirm, img_profile);
+      }
+    );
+    return false;
   }
 
 
