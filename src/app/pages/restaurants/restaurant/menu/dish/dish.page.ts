@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {DishService} from "../../../../../services/dish.service";
+import {AuthService} from "../../../../../services/auth.service";
 
 @Component({
   selector: 'app-dish',
@@ -10,7 +11,7 @@ import {DishService} from "../../../../../services/dish.service";
 export class DishPage implements OnInit {
   public idRoute;
 
-  constructor(private dishServ: DishService, private route: ActivatedRoute) {
+  constructor(private dishServ: DishService, private route: ActivatedRoute, private auth: AuthService) {
     this.idRoute = this.route.snapshot.queryParams.id;
     this.dishServ.retriveDish(this.idRoute);
     this.dishServ.retriveSupplements(this.idRoute);
@@ -34,5 +35,13 @@ export class DishPage implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  get isAuth() {
+    return this.auth.isUserAuthenticated();
+  }
+
+  logout(): void {
+    this.auth.logout();
   }
 }

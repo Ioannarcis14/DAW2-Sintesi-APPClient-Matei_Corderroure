@@ -1,5 +1,5 @@
 <ion-app>
-  <ion-menu side="start" menuId="mainMenu" contentId="mainContent" *ngIf="user.length != 0">
+  <ion-menu  *ngIf="isAuth" side="start" menuId="mainMenu" contentId="mainContent" >
     <ion-header color="primary">
       <ion-toolbar color="primary">
         <div *ngFor="let item of user; index as i">

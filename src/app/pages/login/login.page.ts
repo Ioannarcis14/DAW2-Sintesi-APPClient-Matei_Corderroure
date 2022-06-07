@@ -18,6 +18,14 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
+  get isAuth() {
+    return this._authService.isUserAuthenticated();
+  }
+
+  logout(): void {
+    this._authService.logout();
+  }
+
   async login(): Promise<void> {
     try {
       const response = await this._authService.login(this.email, this.passwd);
@@ -30,7 +38,6 @@ export class LoginPage implements OnInit {
         alert('Incorrect Credentials')
       }
     } catch(error) {
-      alert('Login error');
     }
   }
 }

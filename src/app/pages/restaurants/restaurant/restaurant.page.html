@@ -5,8 +5,11 @@
     </ion-buttons>
     <ion-title [color]="'secondary'">Restaurant</ion-title>
     <ion-buttons [slot]="'end'">
-      <ion-button [routerLink]="['/login']">
+      <ion-button  *ngIf="!isAuth" [routerLink]="['/login']">
         <ion-icon [color]="'light'" [name]="'log-in-outline'"></ion-icon>
+      </ion-button>
+      <ion-button *ngIf="isAuth" (click)="logout()">
+        <ion-icon name="log-out-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -44,12 +47,14 @@
         </ion-item>
       </ion-list>
 
-      <div class="ion-margin-top ion-padding-top">
+      <div class="ion-margin-top ion-padding-top" *ngIf="isAuth">
         <ion-text class="ion-padding-start ">Rate the Restaurant</ion-text>
         <ion-range min="0" max="10" pin color="warning">
           <ion-text slot="start">1</ion-text>
           <ion-text slot="end">10</ion-text>
         </ion-range>
+
+        <ion-button class="ion-margin">Rate</ion-button>
       </div>
 
 

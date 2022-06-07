@@ -1,12 +1,15 @@
 <ion-header>
   <ion-toolbar color="dark">
     <ion-buttons slot="start">
-      <ion-menu-button color="light"></ion-menu-button>
+      <ion-menu-button color="light" *ngIf="isAuth"></ion-menu-button>
     </ion-buttons>
     <ion-title color="secondary">Log In</ion-title>
     <ion-buttons slot="end">
-      <ion-button [routerLink]="['/login']">
-        <ion-icon color="light" name="log-in-outline"></ion-icon>
+      <ion-button  *ngIf="!isAuth" [routerLink]="['/login']">
+        <ion-icon [color]="'light'" [name]="'log-in-outline'"></ion-icon>
+      </ion-button>
+      <ion-button *ngIf="isAuth" (click)="logout()">
+        <ion-icon name="log-out-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>

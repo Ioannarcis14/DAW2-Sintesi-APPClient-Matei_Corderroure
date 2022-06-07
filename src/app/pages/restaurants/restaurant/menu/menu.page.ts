@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {MenuService} from "../../../../services/menu.service";
+import {AuthService} from "../../../../services/auth.service";
 
 @Component({
   selector: 'app-menu',
@@ -10,10 +11,9 @@ import {MenuService} from "../../../../services/menu.service";
 export class MenuPage implements OnInit {
 public idRoute;
 
-  constructor(private menuServ: MenuService, private route: ActivatedRoute) {
+  constructor(private menuServ: MenuService, private route: ActivatedRoute, private auth: AuthService) {
     this.idRoute = this.route.snapshot.queryParams.id;
     this.menuServ.retriveCategories(this.idRoute);
-
   }
 
   get menu() {
@@ -27,6 +27,14 @@ public idRoute;
   }
 
   ngOnInit() {
+  }
+
+  get isAuth() {
+    return this.auth.isUserAuthenticated();
+  }
+
+  logout(): void {
+    this.auth.logout();
   }
 
 }

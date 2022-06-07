@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RestaurantsService } from "../../services/restaurants.service";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-restaurants',
@@ -8,7 +9,7 @@ import { RestaurantsService } from "../../services/restaurants.service";
 })
 export class RestaurantsPage implements OnInit {
 
-  constructor(private restaurantServ: RestaurantsService) {
+  constructor(private restaurantServ: RestaurantsService, private auth: AuthService) {
     this.restaurantServ.retriveRestaurants();
   }
 
@@ -22,4 +23,11 @@ export class RestaurantsPage implements OnInit {
     // this.restaurantServ.retriveRestaurant();
   }
 
+  get isAuth() {
+    return this.auth.isUserAuthenticated();
+  }
+
+  logout(): void {
+    this.auth.logout();
+  }
 }

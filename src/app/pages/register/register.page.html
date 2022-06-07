@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light" *ngIf="isAuth"></ion-menu-button>
+    </ion-buttons>
+    <ion-title color="secondary">Register</ion-title>
+    <ion-buttons slot="end">
+      <ion-button  *ngIf="!isAuth" [routerLink]="['/login']">
+        <ion-icon [color]="'light'" [name]="'log-in-outline'"></ion-icon>
+      </ion-button>
+      <ion-button *ngIf="isAuth" (click)="logout()">
+        <ion-icon name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark">
+
+  <div [ngClass]="['ion-margin']">
+    <ion-grid>
+      <ion-row>
+        <ion-item color="dark" class="ion-margin-vertical">
+          <ion-input [(ngModel)]="email" placeholder="E-mail" ></ion-input>
+        </ion-item>
+      </ion-row>
+      <ion-row>
+        <ion-item color="dark" class="ion-margin-bottom">
+          <ion-input [(ngModel)]="username" placeholder="Username" ></ion-input>
+        </ion-item>
+      </ion-row>
+      <ion-row>
+        <ion-item color="dark" class="ion-margin-bottom">
+          <ion-input [(ngModel)]="name" placeholder="Name" ></ion-input>
+        </ion-item>
+      </ion-row>
+      <ion-row>
+        <ion-item color="dark" class="ion-margin-bottom">
+          <ion-input [(ngModel)]="surname" placeholder="Surname" ></ion-input>
+        </ion-item>
+      </ion-row>
+      <ion-row>
+        <ion-item color="dark" class="ion-margin-bottom">
+          <ion-input [(ngModel)]="phone" placeholder="Phone" ></ion-input>
+        </ion-item>
+      </ion-row>
+      <ion-row>
+        <ion-item color="dark" class="ion-margin-bottom">
+          <ion-input [(ngModel)]="city" placeholder="City" ></ion-input>
+        </ion-item>
+      </ion-row>
+      <ion-row>
+        <ion-item color="dark" class="ion-margin-bottom">
+          <ion-input [(ngModel)]="street" placeholder="Street" ></ion-input>
+        </ion-item>
+      </ion-row>
+      <ion-row>
+        <ion-item color="dark" class="ion-margin-bottom">
+          <ion-input [(ngModel)]="postal_code" placeholder="Zip Code" ></ion-input>
+        </ion-item>
+      </ion-row>
+      <ion-row>
+        <ion-item color="dark" class="ion-margin-bottom">
+          <ion-input type="password" [(ngModel)]="password" placeholder="Password" ></ion-input>
+        </ion-item>
+      </ion-row>
+      <ion-row>
+        <ion-item color="dark" class="ion-margin-bottom">
+          <ion-input type="password" [(ngModel)]="pass_confirm" placeholder="Confirm password" ></ion-input>
+        </ion-item>
+      </ion-row>
+      <ion-row>
+        <ion-item color="dark" class="ion-margin-bottom">
+          <ion-input type="file" [(ngModel)]="img_profile" placeholder="Profile Picture" ></ion-input>
+        </ion-item>
+      </ion-row>
+      <ion-row [ngClass]="['ion-justify-content-center ion-margin-top']">
+        <ion-button color="secondary" (click)="Register()" class="ion-margin-top">SIGN UP</ion-button>
+      </ion-row>
+
+    </ion-grid>
+  </div>
+</ion-content>

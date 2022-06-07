@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {RestaurantService} from "../../../services/restaurant.service";
 import {ActivatedRoute} from "@angular/router";
+import {AuthService} from "../../../services/auth.service";
 
 @Component({
   selector: 'app-restaurant',
@@ -10,7 +11,7 @@ import {ActivatedRoute} from "@angular/router";
 export class RestaurantPage implements OnInit {
   public idRoute;
 
-  constructor(private restaurantServ: RestaurantService, private route: ActivatedRoute) {
+  constructor(private restaurantServ: RestaurantService, private route: ActivatedRoute, private auth: AuthService) {
     this.restaurantServ.retriveRestaurant();
     this.idRoute = this.route.snapshot.queryParams.id;
 
@@ -23,6 +24,14 @@ export class RestaurantPage implements OnInit {
 
   ngOnInit() {
     // this.restaurantServ.retriveRestaurant();
+  }
+
+  get isAuth() {
+    return this.auth.isUserAuthenticated();
+  }
+
+  logout(): void {
+    this.auth.logout();
   }
 
 }
