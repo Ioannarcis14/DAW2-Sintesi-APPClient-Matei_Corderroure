@@ -16,23 +16,15 @@ export class UserService {
   constructor(private _authService: AuthService, private _http: HttpClient, private _router: Router) { }
 
   retriveUser(user): void {
-    let options: any;
 
-    if (this.getUser().length == 0) {
-      options = {
+
+    let options = {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
           'Authorization':'Bearer '+ this._authService.token
         })
       };
-    } else {
-      options = {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json',
-          'Authorization':'Bearer '+ this.getUser().profile.refreshToken
-        })
-      };
-    }
+
 
     this._http.get(this.BASE_URL+"/"+user, options).subscribe(
       (profile: any) => {

@@ -41,13 +41,26 @@
 
       <ion-item *ngFor="let item_s of supplement; index as s">
         <ion-label>{{ item_s.name }}</ion-label>
-        <ion-checkbox color="primary" checked slot="start"></ion-checkbox>
+        <ion-checkbox color="primary" slot="start" [(ngModel)]="supp"></ion-checkbox>
       </ion-item>
     </div>
 
+    <h3 class="ion-padding-start ion-padding-top">Observation</h3>
+    <ion-item>
+      <ion-text class="ion-padding-bottom">write here something that we have to take into consideration:</ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-textarea [(ngModel)]="observation"></ion-textarea>
+    </ion-item>
+
 
     <div class="flexButton">
-      <ion-button>+ Add to cart</ion-button>
+      <ion-button (click)="addCart()">+ Add to cart</ion-button>
+      <div class="flex">
+        <ion-label class="ion-padding-end">Quant:</ion-label>
+        <ion-input [(ngModel)]="quantity" type="number" class="nmb"></ion-input>
+      </div>
     </div>
   </div>
 

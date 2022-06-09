@@ -96,7 +96,7 @@ export class AuthService {
       'postal_code': postal_code,
       'password': password,
       'pass_confirm': pass_confirm,
-      'img_profile': img_profile
+      'userfile': img_profile
 
     }
 
@@ -108,17 +108,17 @@ export class AuthService {
       headers: new HttpHeaders({
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-
+        'Authorization': 'Bearer'+ this.token,
         'Access-Control-Allow-Origin': '*',
         "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
         "Access-Control-Allow-Headers": "access-control-allow-headers,access-control-allow-methods,access-control-allow-origin,authorization,content-type"
       })
     };
 
-    await this._http.post("http://localhost:80/register", data, options).subscribe(
+    await this._http.post("http://localhost:80/api/register", data).subscribe(
       (response: any) => {
         console.log(response);
-        response.refreshToken;
+        this.token = response.refreshToken;
         return true;
       }, async (error: any) => {
         const logResult = await this.restartSession();

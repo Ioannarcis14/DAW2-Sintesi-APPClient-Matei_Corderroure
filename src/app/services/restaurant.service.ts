@@ -3,6 +3,7 @@ import { AuthService } from "./auth.service";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { Restaurant } from '../models/restaurant';
+import {UserService} from "./user.service";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class RestaurantService {
   private BASE_URL: string = "http://localhost:80/api/restaurant/getAll";
   private _restaurants = [];
 
-  constructor(private _authService: AuthService, private _http: HttpClient, private _router: Router) {}
+  constructor(private _authService: AuthService, private _userServ: UserService, private _http: HttpClient, private _router: Router) {}
 
   retriveRestaurant(): void {
     this._http.get(this.BASE_URL).subscribe(
@@ -47,29 +48,33 @@ export class RestaurantService {
   async rate(score, review): Promise<boolean> {
     //Constant per gestionar l'endpoint a utiltizar
     const ENDPOINT: string = "/add";
-
     //Dades de la notícia
     const data: any = {
       'score': score,
-      'review': review
+      'review': review,
+      'id_user': this._userServ.getUser()[0].id,
+      'id_restaurant': this._restaurants[0].id_restaurant
     }
 
     /*Capçaleres necessàries:
         - Generals (tant per WebServices públics com privats): 'Accept' i 'Content-Type'
         - Específica (per gestionar el TOKEN i l'autenticació): 'Authorization'
     */
+
+
+
     const options = {
       headers: new HttpHeaders({
         'Accept': '/',
         'Content-Type': 'application/json',
-
+        'Authorization':'Bearer '+ this._authService.token,
         'Access-Control-Allow-Origin': '*',
         "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
         "Access-Control-Allow-Headers": "access-control-allow-headers,access-control-allow-methods,access-control-allow-origin,authorization,content-type"
       })
     };
 
-    await this._http.post("http://localhost:80/users/createValorations", data, options).subscribe(
+    await this._http.post("http://localhost:80/api/users/createValorations", data, options).subscribe(
       (response: any) => {
         console.log(response);
         response.refreshToken;

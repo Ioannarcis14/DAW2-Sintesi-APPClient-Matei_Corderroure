@@ -1,7 +1,14 @@
 .flexButton {
   display: flex;
-  justify-content: center;
+  flex-direction: row-reverse;
+  justify-content: space-between;
   padding: 25px;
+
+  .flex {
+    display: flex;
+    width: 40%;
+    align-items: center;
+  }
 }
 
 .img {
@@ -10,3 +17,13 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+.nmb {
+  border: 1px solid gray;
+  border-radius: 5px;
+
+  input {
+    width: 25px;
+  }
+}
+
