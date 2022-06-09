@@ -28,6 +28,7 @@ export class UserService {
 
     this._http.get(this.BASE_URL+"/"+user, options).subscribe(
       (profile: any) => {
+        console.log(profile);
           const data: User = {
             id: profile.data.id,
             name: profile.data.name,
@@ -45,6 +46,7 @@ export class UserService {
             active: profile.data.active
           };
           this._user.push(data);
+          this._authService.token = profile.refreshToken;
         }
 
     );

@@ -108,11 +108,8 @@ export class AuthService {
       headers: new HttpHeaders({
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer'+ this.token,
-        'Access-Control-Allow-Origin': '*',
-        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-        "Access-Control-Allow-Headers": "access-control-allow-headers,access-control-allow-methods,access-control-allow-origin,authorization,content-type"
-      })
+        'Authorization': 'Bearer '+ this.token,
+       })
     };
 
     await this._http.post("http://localhost:80/api/register", data).subscribe(

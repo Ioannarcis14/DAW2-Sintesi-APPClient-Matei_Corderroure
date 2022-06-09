@@ -50,10 +50,10 @@ export class RestaurantService {
     const ENDPOINT: string = "/add";
     //Dades de la notícia
     const data: any = {
-      'score': score,
-      'review': review,
+      'rating': score,
+      'observation': review,
       'id_user': this._userServ.getUser()[0].id,
-      'id_restaurant': this._restaurants[0].id_restaurant
+      'id_restaurant': 1 //this._restaurants[0].id_restaurant no agafa el ID
     }
 
     /*Capçaleres necessàries:
@@ -61,23 +61,18 @@ export class RestaurantService {
         - Específica (per gestionar el TOKEN i l'autenticació): 'Authorization'
     */
 
-
-
-    const options = {
-      headers: new HttpHeaders({
-        'Accept': '/',
-        'Content-Type': 'application/json',
-        'Authorization':'Bearer '+ this._authService.token,
-        'Access-Control-Allow-Origin': '*',
-        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-        "Access-Control-Allow-Headers": "access-control-allow-headers,access-control-allow-methods,access-control-allow-origin,authorization,content-type"
-      })
-    };
+        const options = {
+          headers: new HttpHeaders({
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer '+ this._authService.token,
+          })
+        };
 
     await this._http.post("http://localhost:80/api/users/createValorations", data, options).subscribe(
       (response: any) => {
         console.log(response);
-        response.refreshToken;
+        this._authService.token = response.refreshToken;
         return true;
       }
     );
