@@ -3,6 +3,7 @@ import {ActivatedRoute} from "@angular/router";
 import {DishService} from "../../../../../services/dish.service";
 import {AuthService} from "../../../../../services/auth.service";
 import {CartService} from "../../../../../services/cart.service";
+import {MenuService} from "../../../../../services/menu.service";
 
 @Component({
   selector: 'app-dish',
@@ -16,7 +17,7 @@ export class DishPage implements OnInit {
   public observation;
   public supp;
 
-  constructor(private dishServ: DishService, private cartServ: CartService, private route: ActivatedRoute, private auth: AuthService) {
+  constructor(private dishServ: DishService, private cartServ: CartService, private menuServ: MenuService, private route: ActivatedRoute, private auth: AuthService) {
     this.idRoute = this.route.snapshot.queryParams.id;
     this.rRoute = this.route.snapshot.queryParams.r;
 
@@ -28,7 +29,7 @@ export class DishPage implements OnInit {
 
   addCart() {
     console.log(JSON.stringify(this.dish[0].dish_name));
-    this.cartServ.addCart(this.idRoute, this.rRoute, this.quantity, this.observation, this.supp, this.dish[0].dish_name, this.dish[0].price, this.dish[0].imgs )
+    this.cartServ.addCart(this.idRoute, this.rRoute, this.menuServ.getTableId(), this.quantity, this.observation, this.supp, this.dish[0].dish_name, this.dish[0].price, this.dish[0].imgs )
   }
 
   get dish() {

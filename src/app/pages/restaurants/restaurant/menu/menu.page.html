@@ -17,8 +17,8 @@
 
 
 <ion-content>
-
-  <ion-list>
+  {{tables}}
+  <ion-list *ngIf="tables == 'Obtained table for restaurant'">
     <div *ngFor="let cat of categoryName; index as c">
       <ion-list-header> {{ cat }} </ion-list-header>
 
@@ -35,6 +35,7 @@
     </div>
   </ion-list>
 
+  <h2 class="ion-padding"  *ngIf="tables == 'No tables available'">No tables available right now, can't proceed with your order</h2>
   <ion-title *ngIf="menu.length == 0">No Menu Info displayed</ion-title>
 
 </ion-content>

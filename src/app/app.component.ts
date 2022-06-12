@@ -33,9 +33,14 @@ export class AppComponent {
   get cart() {
     return this.cartServ.getCart();
   }
+
   get user() {
     console.log(this.userServ.getUser());
     return this.userServ.getUser();
+  }
+
+  purchase() {
+    this.cartServ.retrieveCart();
   }
 
   get isAuth() {

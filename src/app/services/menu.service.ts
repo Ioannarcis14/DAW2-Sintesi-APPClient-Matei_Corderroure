@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AuthService } from "./auth.service";
-import { HttpClient } from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import { Router } from "@angular/router";
 import { Menu } from "../models/menu";
 
@@ -11,6 +11,8 @@ export class MenuService {
   private BASE_URL: string = "http://localhost:80/api/category/getAll";
   private _categories= [];
   private _catName = [];
+  private _tables;
+  private _tableId;
 
   constructor(private _authService: AuthService, private _http: HttpClient, private _router: Router) {}
 
@@ -44,6 +46,44 @@ export class MenuService {
     );
   }
 
+  async retrieveTables(idR): Promise<boolean>{
+    this._tables = [];
+    const data: any = {
+      'id_restaurant': parseInt(idR),
+    }
+
+    /*Capçaleres necessàries:
+        - Generals (tant per WebServices públics com privats): 'Accept' i 'Content-Type'
+        - Específica (per gestionar el TOKEN i l'autenticació): 'Authorization'
+    */
+
+    const options = {
+      headers: new HttpHeaders({
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer '+ this._authService.token,
+      })
+    };
+
+    await this._http.post("http://localhost:80/api/taula/getOnline", data, options).subscribe(
+      (response: any) => {
+        console.log(response);
+        this._tables.push(response.messages);
+        this._tableId = response.data.id;
+        this._authService.token = response.refreshToken;
+        return true;
+      }
+    );
+    return false;
+  }
+
+  getTables() {
+    return this._tables;
+  }
+
+  getTableId() {
+    return this._tableId;
+  }
 
   getCategories(): any {
     return this._categories;

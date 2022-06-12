@@ -35,12 +35,6 @@
           </ion-item>
         </ion-menu-toggle>
 
-        <ion-menu-toggle auto-hide="true" *ngIf="AuthSession">
-          <ion-item [routerLink]="['/profile']" [routerLinkActive]="['active-menu-item']">
-            <ion-icon name="person-outline"></ion-icon>
-            <ion-label [ngClass]="['ion-margin-start']">Perfil</ion-label>
-          </ion-item>
-        </ion-menu-toggle>
 
       </ion-list>
     </ion-content>
@@ -61,7 +55,9 @@
 
       <ion-tab-button>
         <ion-icon name="cart-outline" id="trigger-button" (click)="cart"></ion-icon>
-        <ion-badge color="danger">6</ion-badge>
+        <ion-badge color="danger" *ngIf="cart">{{ cart.length }}</ion-badge>
+        <ion-badge color="danger" *ngIf="!cart">0</ion-badge>
+
       </ion-tab-button>
 
       <ion-modal trigger="trigger-button"
@@ -75,17 +71,16 @@
               <ion-list-header> Cart </ion-list-header>
 
               <ion-item class="ion-margin-vertical" *ngFor="let item of cart; index as c">
-                <img [src]="item.imgs" />
                 <ion-label>
                   <h2>{{ item.name }}</h2>
-                  <h3>{{item.quantity}} x </h3>
-                  <h3>{{ item.price }}€</h3>
+                  <h3>quantity: <b>{{item.quantity}}</b>  </h3>
+                  <h3>price: <b>{{ item.price * item.quantity}}€</b></h3>
                 </ion-label>
                 <ion-text (click)="remove(c)" color="danger" class="ion-margin-end"><ion-icon name="close-circle-outline"></ion-icon></ion-text>
               </ion-item>
 
             </ion-list>
-            <ion-button class="ion-margin ion-float-end">Purchase</ion-button>
+            <ion-button class="ion-margin ion-float-end" (click)="purchase()">Purchase</ion-button>
           </ion-content>
         </ng-template>
       </ion-modal>
