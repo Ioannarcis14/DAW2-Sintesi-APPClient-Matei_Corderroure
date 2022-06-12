@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {DishService} from "../../../../../services/dish.service";
 import {AuthService} from "../../../../../services/auth.service";
+import {CartService} from "../../../../../services/cart.service";
 
 @Component({
   selector: 'app-dish',
@@ -10,12 +11,15 @@ import {AuthService} from "../../../../../services/auth.service";
 })
 export class DishPage implements OnInit {
   public idRoute;
+  public rRoute;
   public quantity;
   public observation;
   public supp;
 
-  constructor(private dishServ: DishService, private route: ActivatedRoute, private auth: AuthService) {
+  constructor(private dishServ: DishService, private cartServ: CartService, private route: ActivatedRoute, private auth: AuthService) {
     this.idRoute = this.route.snapshot.queryParams.id;
+    this.rRoute = this.route.snapshot.queryParams.r;
+
     this.dishServ.retriveDish(this.idRoute);
     this.dishServ.retriveSupplements(this.idRoute);
     this.dishServ.retriveAllergens(this.idRoute);
@@ -23,21 +27,19 @@ export class DishPage implements OnInit {
   }
 
   addCart() {
-
+    console.log(JSON.stringify(this.dish[0].dish_name));
+    this.cartServ.addCart(this.idRoute, this.rRoute, this.quantity, this.observation, this.supp, this.dish[0].dish_name, this.dish[0].price, this.dish[0].imgs )
   }
 
   get dish() {
-    console.log(this.dishServ.getDishes());
     return this.dishServ.getDishes();
   }
 
   get supplement() {
-    console.log(this.dishServ.getSupplements());
     return this.dishServ.getSupplements();
   }
 
   get allergen() {
-    console.log(this.dishServ.getAllergen());
     return this.dishServ.getAllergen();
   }
 

@@ -37,7 +37,7 @@ export class RestaurantPage implements OnInit {
   }
 
   rate() {
-    this.restaurantServ.rate(this.score, this.review);
+    this.restaurantServ.rate(this.score, this.review, this.idRoute);
   }
 
 }

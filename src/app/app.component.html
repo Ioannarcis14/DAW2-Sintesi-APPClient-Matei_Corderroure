@@ -1,3 +1,4 @@
+
 <ion-app>
   <ion-menu  *ngIf="isAuth" side="start" menuId="mainMenu" contentId="mainContent" >
     <ion-header color="primary">
@@ -59,7 +60,7 @@
 
 
       <ion-tab-button>
-        <ion-icon name="cart-outline" id="trigger-button"></ion-icon>
+        <ion-icon name="cart-outline" id="trigger-button" (click)="cart"></ion-icon>
         <ion-badge color="danger">6</ion-badge>
       </ion-tab-button>
 
@@ -73,24 +74,16 @@
             <ion-list>
               <ion-list-header> Cart </ion-list-header>
 
-              <ion-item class="ion-margin-vertical">
-                <img src="assets/img/dish.jpg" />
+              <ion-item class="ion-margin-vertical" *ngFor="let item of cart; index as c">
+                <img [src]="item.imgs" />
                 <ion-label>
-                  <h2>Bolognesse Spaghetti</h2>
-                  <h3>9.99€</h3>
+                  <h2>{{ item.name }}</h2>
+                  <h3>{{item.quantity}} x </h3>
+                  <h3>{{ item.price }}€</h3>
                 </ion-label>
-                <ion-text (click)="hey()" color="danger" class="ion-margin-end"><ion-icon name="close-circle-outline"></ion-icon></ion-text>
+                <ion-text (click)="remove(c)" color="danger" class="ion-margin-end"><ion-icon name="close-circle-outline"></ion-icon></ion-text>
               </ion-item>
 
-
-              <ion-item>
-                <img src="assets/img/dish2.jpg" />
-                <ion-label>
-                  <h2>Pork Chop</h2>
-                  <h3>12.99€</h3>
-                </ion-label>
-                <ion-text (click)="hey()" color="danger" class="ion-margin-end"><ion-icon name="close-circle-outline"></ion-icon></ion-text>
-              </ion-item>
             </ion-list>
             <ion-button class="ion-margin ion-float-end">Purchase</ion-button>
           </ion-content>
@@ -100,4 +93,6 @@
 
     </ion-tab-bar>
   </ion-tabs>
+
 </ion-app>
+

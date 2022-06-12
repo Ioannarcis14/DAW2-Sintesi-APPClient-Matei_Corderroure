@@ -15,6 +15,7 @@ export class MenuService {
   constructor(private _authService: AuthService, private _http: HttpClient, private _router: Router) {}
 
   retriveCategories(urlPar): void {
+  this._categories = [];
     this._http.get(this.BASE_URL+"/"+urlPar).subscribe(
       (category: any) => {
         for(let i = 0; i < category.data.length; i++) {

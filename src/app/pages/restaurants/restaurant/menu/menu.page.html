@@ -23,7 +23,7 @@
       <ion-list-header> {{ cat }} </ion-list-header>
 
       <div *ngFor="let item of menu; index as id">
-        <ion-item [routerLink]="['dish']" [queryParams]="{id: item.dish_id}" *ngIf="item.name == cat">
+        <ion-item [routerLink]="['dish']" [queryParams]="{id: item.dish_id, r: idRoute}" *ngIf="item.name == cat">
           <img [src]="item.imgs[0]" />
           <ion-label>
             <h2>{{item.dish_name}}</h2>
@@ -36,6 +36,5 @@
   </ion-list>
 
   <ion-title *ngIf="menu.length == 0">No Menu Info displayed</ion-title>
-
 
 </ion-content>

@@ -39,9 +39,11 @@
     <div *ngIf="supplement.length != 0">
       <h3 class="ion-padding-start ion-padding-top">Supliments</h3>
 
-      <ion-item *ngFor="let item_s of supplement; index as s">
-        <ion-label>{{ item_s.name }}</ion-label>
-        <ion-checkbox color="primary" slot="start" [(ngModel)]="supp"></ion-checkbox>
+      <ion-item>
+        <ion-select [(ngModel)]="supp" placeholder="Select One Supplement">
+          <ion-select-option>None</ion-select-option>
+          <ion-select-option *ngFor="let item_s of supplement; index as s" [value]="item_s.id">{{item_s.name}}</ion-select-option>
+        </ion-select>
       </ion-item>
     </div>
 

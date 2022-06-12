@@ -17,12 +17,10 @@ public idRoute;
   }
 
   get menu() {
-    console.log(this.menuServ.getCategories());
     return this.menuServ.getCategories();
   }
 
   get categoryName() {
-    console.log(this.menuServ.getCatNames());
     return this.menuServ.getCatNames();
   }
 

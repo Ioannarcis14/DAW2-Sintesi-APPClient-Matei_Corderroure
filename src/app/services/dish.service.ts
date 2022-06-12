@@ -18,6 +18,7 @@ export class DishService {
   constructor(private _authService: AuthService, private _http: HttpClient, private _router: Router) {}
 
   retriveDish(dish_id): void {
+    this._dish = [];
     this._http.get(this.BASE_URL+"/"+dish_id).subscribe(
       (dish: any) => {
         for(let i = 0; i < dish.data.length; i++) {
@@ -36,6 +37,7 @@ export class DishService {
   }
 
   retriveSupplements(dish_id): void {
+    this._supp = [];
     this._http.get("http://localhost:80/api/supplement/getAll/"+dish_id).subscribe(
       (dish_s: any) => {
         for(let i = 0; i < dish_s.data.length; i++) {
@@ -52,6 +54,7 @@ export class DishService {
   }
 
   retriveAllergens(dish_id): void {
+    this._allergen = [];
     this._http.get("http://localhost:80/api/allergen/getAll/"+dish_id).subscribe(
       (dish_a: any) => {
         for(let i = 0; i < dish_a.data.length; i++) {

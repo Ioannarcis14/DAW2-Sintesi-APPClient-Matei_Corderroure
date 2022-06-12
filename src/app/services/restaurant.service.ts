@@ -16,6 +16,7 @@ export class RestaurantService {
   constructor(private _authService: AuthService, private _userServ: UserService, private _http: HttpClient, private _router: Router) {}
 
   retriveRestaurant(): void {
+    this._restaurants = [];
     this._http.get(this.BASE_URL).subscribe(
       (restaurant: any) => {
         for(let i = 0; i < restaurant.data.length; i++) {
@@ -45,7 +46,7 @@ export class RestaurantService {
     return this._restaurants;
   }
 
-  async rate(score, review): Promise<boolean> {
+  async rate(score, review, idRoute): Promise<boolean> {
     //Constant per gestionar l'endpoint a utiltizar
     const ENDPOINT: string = "/add";
     //Dades de la notícia
@@ -53,7 +54,7 @@ export class RestaurantService {
       'rating': score,
       'observation': review,
       'id_user': this._userServ.getUser()[0].id,
-      'id_restaurant': 1 //this._restaurants[0].id_restaurant no agafa el ID
+      'id_restaurant': parseInt(idRoute)
     }
 
     /*Capçaleres necessàries:
