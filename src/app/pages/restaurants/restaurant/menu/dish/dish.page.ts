@@ -18,6 +18,9 @@ export class DishPage implements OnInit {
   public supp;
 
   constructor(private dishServ: DishService, private cartServ: CartService, private menuServ: MenuService, private route: ActivatedRoute, private auth: AuthService) {
+    this.quantity = 1;
+    this.observation = "none";
+
     this.idRoute = this.route.snapshot.queryParams.id;
     this.rRoute = this.route.snapshot.queryParams.r;
 

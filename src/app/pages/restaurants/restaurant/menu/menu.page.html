@@ -24,7 +24,7 @@
 
       <div *ngFor="let item of menu; index as id">
         <ion-item [routerLink]="['dish']" [queryParams]="{id: item.dish_id, r: idRoute}" *ngIf="item.name == cat">
-          <img [src]="item.imgs[0]" />
+          <img [src]="'/assets/'+item.imgs[0].replace('public/','')" />
           <ion-label>
             <h2>{{item.dish_name}}</h2>
             <p>{{item.dish_short_description}}</p>

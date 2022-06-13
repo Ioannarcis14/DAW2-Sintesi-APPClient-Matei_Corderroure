@@ -3,6 +3,7 @@ import {ActivatedRoute} from "@angular/router";
 import {UserService} from "./services/user.service";
 import {AuthService} from "./services/auth.service";
 import { ModalController } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
 
 import {CartService} from "./services/cart.service";
 
@@ -15,7 +16,7 @@ export class AppComponent {
   public idRoute;
   public userLS;
 
-  constructor(private userServ: UserService, private modalController: ModalController, private cartServ: CartService, private route: ActivatedRoute, private auth: AuthService ) {
+  constructor(public toastController: ToastController, private userServ: UserService, private modalController: ModalController, private cartServ: CartService, private route: ActivatedRoute, private auth: AuthService ) {
     this.idRoute = this.route.snapshot.queryParams.id;
     this.userLS = localStorage.getItem('LOGIN');
     this.cart;
@@ -41,6 +42,7 @@ export class AppComponent {
 
   purchase() {
     this.cartServ.retrieveCart();
+    this.presentToast();
   }
 
   get isAuth() {
@@ -53,4 +55,14 @@ export class AppComponent {
 
   ngOnInit() {
   }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'We are processing your order',
+      duration: 2000
+    });
+    toast.present();
+  }
+
+
 }

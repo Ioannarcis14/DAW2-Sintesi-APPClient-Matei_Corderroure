@@ -32,6 +32,7 @@ export class MenuService {
             dish_price: category.data[i].dish_price,
             dish_description: category.data[i].dish_description,
             dish_short_description: category.data[i].dish_short_description,
+
             imgs: category.data[i].imgs.split(','),
 
           };
