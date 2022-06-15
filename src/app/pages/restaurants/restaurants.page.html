@@ -22,8 +22,10 @@
         <ion-col size-sm="12" size-md="6">
           <ion-card [ngClass]="['ion-margin ion-justify-content-center']" [color]="'dark'">
             <ion-header>
-              <img [src]="'/assets/'+ restaurant.first_img[0]">
-<!--              <img [src]="'/assets/img/demo_rest.jpg'">-->
+
+              {{ restaurant.first_img}}
+              <img *ngIf="restaurant.first_img != ''" [src]="'/assets/'+ restaurant.first_img[0]">
+              <img *ngIf="restaurant.first_img == ''" [src]="'/assets/img/demo_rest.jpg'">
               <a [routerLink]="['restaurant']" [queryParams]="{id: restaurant.id}">
               <div [ngClass]="'overlay'">
                 <div [ngClass]="'text'">

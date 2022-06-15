@@ -20,7 +20,8 @@
     <div *ngIf="id+1 == idRoute">
       <ion-slides [pager]="'true'" [options]="'slideOpts'">
         <ion-slide *ngFor="let rest_img of restaurants[id].img_gallery; index as i">
-          <img [src]="'/assets/'+ rest_img">
+          <img *ngIf="rest_img != ''" [src]="'/assets/'+ rest_img">
+          <img *ngIf="rest_img == ''" [src]="'/assets/img/demo_rest.jpg'">
         </ion-slide>
       </ion-slides>
       <div [ngClass]="'ion-padding'">

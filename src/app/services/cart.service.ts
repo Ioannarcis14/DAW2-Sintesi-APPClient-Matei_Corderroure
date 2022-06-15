@@ -101,6 +101,7 @@ export class CartService {
       (response: any) => {
         console.log(response);
         this._authService.token = response.refreshToken;
+        localStorage.removeItem('cart');
         return true;
       }
     );
